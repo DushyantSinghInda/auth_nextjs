@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -65,6 +65,7 @@ export default function LoginPage() {
         className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
       >
         {buttonDisabled ? "No Login" : "Login"}
+        <Toaster />
       </button>
       <Link href="/signup">Visit Signup page</Link>
     </div>
