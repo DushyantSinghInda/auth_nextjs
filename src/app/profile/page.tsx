@@ -7,7 +7,11 @@ import { toast } from "react-hot-toast";
 
 export default function ProfilePage() {
   const router = useRouter();
-  const [data, setData] = useState("nothing");
+  const [data, setData] = useState({
+    id: "",
+    name: "",
+    email: "",
+  });
   const logout = async () => {
     try {
       await axios.get("/api/users/logout");
@@ -20,8 +24,13 @@ export default function ProfilePage() {
   };
   const getUserDetails = async () => {
     const res = await axios.get("/api/users/me");
-    console.log(res.data);
-    setData(res.data.data._id);
+    console.log(res.data.data);
+    setData({
+      ...data,
+      id: res.data.data._id,
+      email: res.data.data.email,
+      name: res.data.data.username,
+    });
   };
 
   return (
@@ -29,12 +38,23 @@ export default function ProfilePage() {
       <h1>Profile</h1>
       <hr />
       <p>Profile page</p>
-      <h2 className="p-1 rounded bg-green-500 ">
-        {data === "nothing" ? (
-          "Nothing"
-        ) : (
-          <Link href={`/profile/${data}`}>{data}</Link>
-        )}
+      <h2
+        className={
+          data.id === ""
+            ? ""
+            : "my-3 p-3 rounded border-2 border-dashed hover:border-solid border-[white] "
+        }
+      >
+        {
+          <Link href={`/profile/${data.id}`}>
+            {
+              <h2 className="text-center mb-2 text-2xl font-[600]">
+                {data.name}
+              </h2>
+            }{" "}
+            {<h3 className="text-xl italic ">{data.email}</h3>}
+          </Link>
+        }
       </h2>
       <hr />
       <button

@@ -6,7 +6,7 @@ import { connect } from "@/dbconfig/dbconfig";
 
 connect();
 
-export async function GET(request: NextRequest, response: NextResponse) {
+export async function GET(request: NextRequest) {
   try {
     const userID = await getDataFromToken(request);
     const user = await User.findOne({ _id: userID }).select("-password");
