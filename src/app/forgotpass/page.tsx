@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { toast } from "react-hot-toast";
 
-export default function forgotpass() {
+export default function Forgotpass() {
   const router = useRouter();
   const [user, setUser] = React.useState({ email: "" });
   const [loading, setLoading] = React.useState(false);

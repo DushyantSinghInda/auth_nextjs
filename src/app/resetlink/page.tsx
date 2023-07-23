@@ -1,7 +1,7 @@
 "use client";
 import { Mail } from "lucide-react";
 
-export default function resetlink() {
+export default function Resetlink() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Mail size={48} color="#6c70ea" strokeWidth={1.25} />
@@ -9,8 +9,8 @@ export default function resetlink() {
         We have sent a password reset link to your registered email ID
       </h4>
       <h6 className="text-[15px] w-[400px] text-center">
-        Click on the 'Reset Password' link sent to your email ID and create a
-        new password
+        Click on the Reset Password link sent to your email ID and create a new
+        password
       </h6>
     </div>
   );
